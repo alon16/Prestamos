@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroCredito">
+
+    <TextView
+        android:id="@+id/tvSolicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Solicitud de Prestamo"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRegistroCredito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Registro de Credito"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSolicitud" />
+
+    <TextView
+        android:id="@+id/tvMonto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="16dp"
+        android:text="Monto Credito"
+        app:layout_constraintStart_toStartOf="@+id/tvRegistroCredito"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistroCredito" />
+
+    <TextView
+        android:id="@+id/tvInteres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:text="Interes(%)"
+        app:layout_constraintStart_toEndOf="@+id/tvMonto"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistroCredito" />
+
+    <TextView
+        android:id="@+id/tvPlazo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Plazo"
+        app:layout_constraintStart_toEndOf="@+id/tvInteres"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistroCredito" />
+
+    <EditText
+        android:id="@+id/etMonto"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/cbInteres"
+        app:layout_constraintStart_toStartOf="@+id/tvMonto"
+        app:layout_constraintTop_toBottomOf="@+id/tvMonto" />
+
+    <Spinner
+        android:id="@+id/cbInteres"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/interes"
+        app:layout_constraintEnd_toStartOf="@+id/etPlazo"
+        app:layout_constraintStart_toStartOf="@+id/tvInteres"
+        app:layout_constraintTop_toBottomOf="@+id/tvInteres" />
+
+    <EditText
+        android:id="@+id/etPlazo"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPlazo"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlazo" />
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Fecha"
+        app:layout_constraintStart_toStartOf="@+id/etMonto"
+        app:layout_constraintTop_toBottomOf="@+id/etMonto" />
+
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
+
+    <TextView
+        android:id="@+id/tvFechaEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fecha Finalizacion"
+        app:layout_constraintStart_toStartOf="@+id/etFecha"
+        app:layout_constraintTop_toBottomOf="@+id/etFecha" />
+
+    <EditText
+        android:id="@+id/etFechaEnd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/etFecha"
+        app:layout_constraintStart_toStartOf="@+id/tvFechaEnd"
+        app:layout_constraintTop_toBottomOf="@+id/tvFechaEnd" />
+
+    <TextView
+        android:id="@+id/tvInfoMonto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Monto a Pagar:"
+        app:layout_constraintStart_toStartOf="@+id/etFechaEnd"
+        app:layout_constraintTop_toBottomOf="@+id/etFechaEnd" />
+
+    <TextView
+        android:id="@+id/tvInfoMontoCuota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Monto por Cuota:"
+        app:layout_constraintStart_toStartOf="@+id/tvInfoMonto"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoMonto" />
+
+    <TextView
+        android:id="@+id/tvTotalPagar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        android:text="0.0"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/tvInfoMonto"
+        app:layout_constraintTop_toBottomOf="@+id/etFechaEnd" />
+
+    <TextView
+        android:id="@+id/tvCuota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0.0"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalPagar"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPagar" />
+
+    <Button
+        android:id="@+id/btFinalizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Finalizar"
+        android:onClick="onClickFinalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCuota"
+        app:layout_constraintVertical_bias="0.877" />
+</android.support.constraint.ConstraintLayout>
