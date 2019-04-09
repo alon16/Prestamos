@@ -16,9 +16,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class RegistroCredito extends AppCompatActivity {
-    private int montito=0;
+    private Double montito=0.0;
     private int tiempo=1;
-    private double inte=0.15;
+    private Double inte=0.15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,17 @@ public class RegistroCredito extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().length()>0){
-                    montito= Integer.parseInt(s.toString());
+                    montito= Double.parseDouble(s.toString());
                     calculando(montito,inte,tiempo);
+                }
+                else {
+
+                    TextView mostrarMonto= findViewById(R.id.tvTotalPagar);
+                    TextView mostrarCuota=findViewById(R.id.tvCuota);
+                    mostrarCuota.setText("0.0");
+                    mostrarMonto.setText("0.0");
+
+
                 }
 
             }
@@ -90,6 +99,14 @@ public class RegistroCredito extends AppCompatActivity {
                     tiempo=Integer.parseInt(s.toString());
                     calculando(montito,inte,tiempo);
                 }
+                else{
+                    EditText fechaFinal= findViewById(R.id.etFechaEnd);
+                    SimpleDateFormat fechis= new SimpleDateFormat("dd/MM/yyyy");
+                    Calendar c= Calendar.getInstance();
+                    c.setTime(new Date());
+                    c.add(Calendar.MONTH,1);//Agregar el siguiente mes
+                    fechaFinal.setText(fechis.format(c.getTime()));
+                }
 
             }
 
@@ -99,11 +116,11 @@ public class RegistroCredito extends AppCompatActivity {
             }
         });
     }
-    public void calculando(int monto,double interes, int plazo){
+    public void calculando(Double monto,Double interes, int plazo){
         TextView mostrarMonto= findViewById(R.id.tvTotalPagar);
         TextView mostrarCuota=findViewById(R.id.tvCuota);
 
-        Double total =(double)montito+(montito*(inte*plazo));
+        Double total =montito+(montito*(inte*plazo));
         mostrarMonto.setText(String.valueOf(total));
         mostrarCuota.setText(String.valueOf((total/plazo)));
 
