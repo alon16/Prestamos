@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvcedula" />
 
     <TextView
-        android:id="@+id/tvOcupacion"
+        android:id="@+id/tvsd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -155,8 +155,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvOcupacion"
-        app:layout_constraintTop_toBottomOf="@+id/tvOcupacion" />
+        app:layout_constraintStart_toStartOf="@+id/tvsd"
+        app:layout_constraintTop_toBottomOf="@+id/tvsd" />
 
     <TextView
         android:id="@+id/tvDireccion"
@@ -184,9 +184,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="32dp"
-        android:text="Continuar"
+        android:layout_marginBottom="30dp"
         android:onClick="onClickContinuar"
+        android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -201,5 +201,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvTelefono"
         app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="onClickCancelar"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btContinuar" />
 
 </android.support.constraint.ConstraintLayout>

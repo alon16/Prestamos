@@ -1,19 +1,23 @@
 package com.example.prestamos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class RegistroCredito extends AppCompatActivity {
     private Double montito=0.0;
@@ -29,6 +33,27 @@ public class RegistroCredito extends AppCompatActivity {
         Spinner interes= findViewById(R.id.cbInteres);
         EditText fechaInicio= findViewById(R.id.etFecha);
         EditText fechaFinal= findViewById(R.id.etFechaEnd);
+        Spinner nombres= findViewById(R.id.cbNombre);
+        //Creando Adaptador Para Spinner
+        List<String>spnombre= new ArrayList<String>();
+        Bundle extras=getIntent().getExtras();
+        String valor = null;
+
+        if(extras!=null)
+        {
+            valor= extras.getString("nombre");
+            spnombre.add(valor);
+        }
+        else {
+            for (Cliente c:Datos.clientes) {
+                spnombre.add(c.getNombre()+" "+c.getApellido());
+            }
+        }
+
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,spnombre);
+        //Asignando Adaptador
+        nombres.setAdapter(adapter);
         //Iniciando fechas.
         SimpleDateFormat fechis= new SimpleDateFormat("dd/MM/yyyy");
         Calendar c= Calendar.getInstance();
@@ -134,7 +159,15 @@ public class RegistroCredito extends AppCompatActivity {
 
     }
     public void onClickFinalizar(View view){
-        Toast.makeText(this, "Gracias!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent();
+        if(view.getId()==R.id.btFinalizar){
+            setResult(RESULT_OK,intent);
+        }
+        else
+            setResult(RESULT_CANCELED,intent);
+        finish();
+
     }
 
 }
