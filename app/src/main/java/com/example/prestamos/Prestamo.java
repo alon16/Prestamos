@@ -2,15 +2,19 @@ package com.example.prestamos;
 
 public class Prestamo {
     private  String cliente;
-    private String montoCredito;
+    private Double montoCredito;
     private String interes;
     private String plazo;
     private String fechaInicio;
     private String fechaFinal;
-    private String MontoPagar;
-    private String MontoCuota;
+    private Double MontoPagar;
+    private Double MontoCuota;
 
-    public Prestamo(String Cliente,String montoCredito, String interes, String plazo, String fechaInicio, String fechaFinal, String montoPagar, String montoCuota) {
+    public Prestamo(){
+
+    };
+
+    public Prestamo(String Cliente,Double montoCredito, String interes, String plazo, String fechaInicio, String fechaFinal, Double montoPagar, Double montoCuota) {
         this.cliente= Cliente;
         this.montoCredito = montoCredito;
         this.interes = interes;
@@ -29,7 +33,7 @@ public class Prestamo {
         return cliente;
     }
 
-    public void setMontoCredito(String montoCredito) {
+    public void setMontoCredito(Double montoCredito) {
         this.montoCredito = montoCredito;
     }
 
@@ -49,15 +53,15 @@ public class Prestamo {
         this.fechaFinal = fechaFinal;
     }
 
-    public void setMontoPagar(String montoPagar) {
+    public void setMontoPagar(Double montoPagar) {
         MontoPagar = montoPagar;
     }
 
-    public void setMontoCuota(String montoCuota) {
+    public void setMontoCuota(Double montoCuota) {
         MontoCuota = montoCuota;
     }
 
-    public String getMontoCredito() {
+    public Double getMontoCredito() {
         return montoCredito;
     }
 
@@ -77,11 +81,11 @@ public class Prestamo {
         return fechaFinal;
     }
 
-    public String getMontoPagar() {
+    public Double getMontoPagar() {
         return MontoPagar;
     }
 
-    public String getMontoCuota() {
+    public Double getMontoCuota() {
         return MontoCuota;
     }
 }

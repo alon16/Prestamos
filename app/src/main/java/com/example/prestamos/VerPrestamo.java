@@ -3,6 +3,7 @@ package com.example.prestamos;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class VerPrestamo extends AppCompatActivity {
@@ -23,13 +24,13 @@ public class VerPrestamo extends AppCompatActivity {
         TextView montoCuota=findViewById(R.id.tvMontoCuota);
         if (!Datos.prestamos.isEmpty()){
             cliente.setText(Datos.prestamos.get(0).getCliente());
-            monto.setText(Datos.prestamos.get(0).getMontoCredito());
-            interes.setText(Datos.prestamos.get(0).getInteres());
+            monto.setText(Datos.prestamos.get(0).getMontoCredito().toString());
+            interes.setText(Datos.prestamos.get(0).getInteres().toString());
             plazo.setText(Datos.prestamos.get(0).getPlazo());
             fechaInicio.setText(Datos.prestamos.get(0).getFechaInicio());
             fechaFinal.setText(Datos.prestamos.get(0).getFechaFinal());
-            montoPagar.setText(Datos.prestamos.get(0).getMontoPagar());
-            montoCuota.setText(Datos.prestamos.get(0).getMontoCuota());
+            montoPagar.setText(Datos.prestamos.get(0).getMontoPagar().toString());
+            montoCuota.setText(Datos.prestamos.get(0).getMontoCuota().toString());
         }
         else {
             cliente.setText("");
@@ -42,6 +43,11 @@ public class VerPrestamo extends AppCompatActivity {
             montoCuota.setText("");
 
         }
+    }
+    public void onClick(View view){
+
+
+
     }
 
 }

@@ -180,6 +180,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:text="Siguiente"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -190,6 +191,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:text="Anterior"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btSiguiente" />
 

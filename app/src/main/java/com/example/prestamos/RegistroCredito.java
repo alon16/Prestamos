@@ -162,6 +162,25 @@ public class RegistroCredito extends AppCompatActivity {
 
         Intent intent = new Intent();
         if(view.getId()==R.id.btFinalizar){
+            Prestamo NuevoPrestamo= new Prestamo();
+            Spinner nombres= findViewById(R.id.cbNombre);
+            EditText monto= findViewById(R.id.etMonto);
+            Spinner interes= findViewById(R.id.cbInteres);
+            TextView plazo=findViewById(R.id.etPlazo);
+            EditText fechaInicio=findViewById(R.id.etFecha);
+            EditText fechaFinal= findViewById(R.id.etFechaEnd);
+            TextView montoPagar=findViewById(R.id.tvTotalPagar);
+            TextView montoCuota=findViewById(R.id.tvCuota);
+            NuevoPrestamo.setMontoCredito(Double.parseDouble(monto.getText().toString()));
+            NuevoPrestamo.setCliente(nombres.getSelectedItem().toString());
+
+            NuevoPrestamo.setInteres(interes.getSelectedItem().toString());
+            NuevoPrestamo.setPlazo(plazo.getText().toString());
+            NuevoPrestamo.setFechaInicio(fechaInicio.getText().toString());
+            NuevoPrestamo.setFechaFinal(fechaFinal.getText().toString());
+            NuevoPrestamo.setMontoPagar(Double.valueOf(montoPagar.getText().toString()));
+            NuevoPrestamo.setMontoCuota(Double.valueOf(montoCuota.getText().toString()));
+            Datos.prestamos.add(NuevoPrestamo);
             setResult(RESULT_OK,intent);
         }
         else

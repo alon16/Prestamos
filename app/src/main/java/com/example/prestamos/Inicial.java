@@ -1,5 +1,7 @@
 package com.example.prestamos;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,8 @@ public class Inicial extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicial);
+        TextView tvDatos=findViewById(R.id.tvDatos);
+        registerForContextMenu(tvDatos);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,8 +39,11 @@ public class Inicial extends AppCompatActivity {
                 startActivityForResult(intent,1111);
                 break;
             case R.id.mnPrestamo:
+                if(!Datos.clientes.isEmpty()){
                 Intent intent1 = new Intent(this, RegistroCredito.class);
-                startActivityForResult(intent1,2222);
+                startActivityForResult(intent1,2222);}
+                else
+                    Toast.makeText(this, "Ingrese Clientes Primero", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnVerCliente:
                 Intent intent2 = new Intent(this, VistaCliente.class);
@@ -73,5 +80,30 @@ public class Inicial extends AppCompatActivity {
                 tvDatos.append("\n Cancelo Ingreso de Nuevo Prestamo");
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.contextual,menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        TextView tvDatos=findViewById(R.id.tvDatos);
+        switch (item.getItemId()){
+            case R.id.mnCopiar:
+
+                ClipboardManager clipboardManager = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+
+                ClipData clipData = ClipData.newPlainText("Historial", tvDatos.getText());
+
+                clipboardManager.setPrimaryClip(clipData);
+                break;
+            case R.id.mnBorrar:
+                tvDatos.setText("");
+        }
+        return super.onContextItemSelected(item);
     }
 }
