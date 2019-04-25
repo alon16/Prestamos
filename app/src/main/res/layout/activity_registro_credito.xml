@@ -38,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Monto Credito"
-        app:layout_constraintTop_toBottomOf="@+id/cbNombre"
-        tools:layout_editor_absoluteX="24dp" />
+        app:layout_constraintStart_toStartOf="@+id/cbNombre"
+        app:layout_constraintTop_toBottomOf="@+id/cbNombre" />
 
     <TextView
         android:id="@+id/tvInteres"

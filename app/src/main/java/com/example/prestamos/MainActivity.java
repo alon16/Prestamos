@@ -2,6 +2,7 @@ package com.example.prestamos;
 
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar bar=getSupportActionBar();
+        bar.setSubtitle("Ingresar Cliente");
     }
     public  void onClickCancelar(View view){
         Intent intent = new Intent();

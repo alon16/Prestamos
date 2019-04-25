@@ -17,7 +17,7 @@ public class VistaCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_cliente);
         ActionBar bar=getSupportActionBar();
-        bar.setSubtitle("Subtitulito");
+        bar.setSubtitle("Ver Prestamo");
         TextView nombre= findViewById(R.id.tvNombre);
         TextView telefono= findViewById(R.id.tvTelefono);
         TextView cedula= findViewById(R.id.tvCedula);

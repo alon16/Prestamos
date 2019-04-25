@@ -1,6 +1,7 @@
 package com.example.prestamos;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -28,6 +29,8 @@ public class RegistroCredito extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_credito);
+        ActionBar bar=getSupportActionBar();
+        bar.setSubtitle("Ingresar Credito");
         EditText monto= findViewById(R.id.etMonto);
         EditText plazos= findViewById(R.id.etPlazo);
         Spinner interes= findViewById(R.id.cbInteres);

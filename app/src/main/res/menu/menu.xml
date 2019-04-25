@@ -7,7 +7,7 @@
 
     <item android:title="Nuevo Cliente"
         android:id="@+id/mnCliente"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/usericon"
         app:showAsAction="always"></item>
 
         <item android:id="@+id/mnVerCliente"
