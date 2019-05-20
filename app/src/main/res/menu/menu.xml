@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:title="Nuevo Prestamo"
-        android:id="@+id/mnPrestamo"
-        app:showAsAction="always"></item>
 
     <item android:title="Nuevo Cliente"
         android:id="@+id/mnCliente"
         android:icon="@drawable/usericon"
         app:showAsAction="always"></item>
 
+    <item android:title="Lista Prestamo"
+        android:id="@+id/mnPrestamo"
+        android:icon="@drawable/ic_ver_dinero"
+        app:showAsAction="always"></item>
+
         <item android:id="@+id/mnVerCliente"
             android:title="Ver cliente"/>
-        <item android:id="@+id/mnVerPrestamo"
-            android:title="Ver Prestamo"/>
         <item android:id="@+id/mnVAcerdaDe"
             android:title="Acerca De"/>
     

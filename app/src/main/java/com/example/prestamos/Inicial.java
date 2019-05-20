@@ -21,6 +21,12 @@ public class Inicial extends AppCompatActivity {
         setContentView(R.layout.activity_inicial);
         TextView tvDatos=findViewById(R.id.tvDatos);
         registerForContextMenu(tvDatos);
+
+        Datos.clientes.add(new Cliente("katherine","Ruiz","Femenino","85701960","0861010971000s","Estudiante","sdfdfgfh"));
+        Datos.clientes.add(new Cliente("Rodrigo","Perez","Maculino","85561960","0861010971000s","Estudiante","sdfdfgfh"));
+        Datos.clientes.add(new Cliente("Amelia","Rosales","Femenino","887901960","0861010971000s","Estudiante","sdfdfgfh"));
+
+        Datos.prestamos.add(new Prestamo("katherine Ruiz",2345.0,"15","4","10/10/2019","10/02/2020",3752.0,938.0));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,23 +41,18 @@ public class Inicial extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.mnCliente:
                 Intent intent = new Intent(this, MainActivity.class);
-
                 startActivityForResult(intent,1111);
                 break;
             case R.id.mnPrestamo:
                 if(!Datos.clientes.isEmpty()){
-                Intent intent1 = new Intent(this, RegistroCredito.class);
-                startActivityForResult(intent1,2222);}
+                Intent intent1 = new Intent(this, listaPrestamos.class);
+                startActivity(intent1);}
                 else
                     Toast.makeText(this, "Ingrese Clientes Primero", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnVerCliente:
-                Intent intent2 = new Intent(this, VistaCliente.class);
+                Intent intent2 = new Intent(this, RVActivity.class);
                 startActivity(intent2);
-                break;
-            case R.id.mnVerPrestamo:
-                Intent intent3 = new Intent(this, VerPrestamo.class);
-                startActivity(intent3);
                 break;
 
         }

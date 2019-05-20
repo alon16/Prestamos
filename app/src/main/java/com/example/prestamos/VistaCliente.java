@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +28,24 @@ public class VistaCliente extends AppCompatActivity {
         TextView ocupacion= findViewById(R.id.tvOcupacion);
         TextView sexo= findViewById(R.id.tvSexo);
 
+        Bundle extras=getIntent().getExtras();
+        int posicion=0;
+
+        if(extras!=null)
+        {
+
+            posicion=extras.getInt("position");
+            nombre.setText(Datos.clientes.get(posicion).getNombre());
+            telefono.setText(Datos.clientes.get(posicion).getTelefono());
+            cedula.setText(Datos.clientes.get(posicion).getCedula());
+            direccion.setText(Datos.clientes.get(posicion).getDireccion());
+            apellido.setText(Datos.clientes.get(posicion).getApellido());
+            ocupacion.setText(Datos.clientes.get(posicion).getOcupacion());
+            sexo.setText(Datos.clientes.get(posicion).getSexo());
+        }
+
         //Inicializando los TextView
-        if (!Datos.clientes.isEmpty()){
+        /*if (!Datos.clientes.isEmpty()){
         nombre.setText(Datos.clientes.get(0).getNombre());
         telefono.setText(Datos.clientes.get(0).getTelefono());
         cedula.setText(Datos.clientes.get(0).getCedula());
@@ -45,9 +63,30 @@ public class VistaCliente extends AppCompatActivity {
             apellido.setText("");
             ocupacion.setText("");
             sexo.setText("");
-        }
+        }*/
     }
-    private int contador=0;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menuagregar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        TextView nombre= findViewById(R.id.tvNombre);
+        TextView apellido= findViewById(R.id.tvApellido);
+
+            if(item.getItemId()==R.id.mnNuevoPrestamo){
+                Intent intent= new Intent(this, RegistroCredito.class);
+                intent.putExtra("nombre",nombre.getText()+" "+apellido.getText());
+                startActivity(intent);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    /*private int contador=0;
+
     public void Onclick(View view){
 
         TextView nombre= findViewById(R.id.tvNombre);
@@ -96,5 +135,5 @@ public class VistaCliente extends AppCompatActivity {
 
         }
 
-    }
+    }*/
 }

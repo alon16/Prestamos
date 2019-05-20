@@ -46,7 +46,7 @@ public class VerPrestamo extends AppCompatActivity {
 
         }
     }
-    public void onClick(View view){
+    /*public void onClick(View view){
         TextView cliente= findViewById(R.id.tvCliente);
         TextView monto= findViewById(R.id.tvMontoCredito);
         TextView interes=findViewById(R.id.tvInteres);
@@ -90,6 +90,6 @@ public class VerPrestamo extends AppCompatActivity {
 
         }
 
-    }
+    }*/
 
 }

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +26,6 @@ public class RegistroCredito extends AppCompatActivity {
     private Double montito=0.0;
     private int tiempo=1;
     private Double inte=0.15;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,27 +145,16 @@ public class RegistroCredito extends AppCompatActivity {
             }
         });
     }
-    public void calculando(Double monto,Double interes, int plazo){
-        TextView mostrarMonto= findViewById(R.id.tvTotalPagar);
-        TextView mostrarCuota=findViewById(R.id.tvCuota);
-
-        Double total =montito+(montito*(inte*plazo));
-        mostrarMonto.setText(String.valueOf(total));
-        mostrarCuota.setText(String.valueOf((total/plazo)));
-
-        EditText fechaFinal= findViewById(R.id.etFechaEnd);
-
-        SimpleDateFormat fechis= new SimpleDateFormat("dd/MM/yyyy");
-        Calendar c= Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.MONTH,plazo);//Agregar el siguiente mes
-        fechaFinal.setText(fechis.format(c.getTime()));
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menuagregarprestamo,menu);
+        return super.onCreateOptionsMenu(menu);
     }
-    public void onClickFinalizar(View view){
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent();
-        if(view.getId()==R.id.btFinalizar){
+        if(item.getItemId()==R.id.mnGuardar){
             Prestamo NuevoPrestamo= new Prestamo();
             Spinner nombres= findViewById(R.id.cbNombre);
             EditText monto= findViewById(R.id.etMonto);
@@ -189,6 +179,24 @@ public class RegistroCredito extends AppCompatActivity {
         else
             setResult(RESULT_CANCELED,intent);
         finish();
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void calculando(Double monto,Double interes, int plazo){
+        TextView mostrarMonto= findViewById(R.id.tvTotalPagar);
+        TextView mostrarCuota=findViewById(R.id.tvCuota);
+
+        Double total =montito+(montito*(inte*plazo));
+        mostrarMonto.setText(String.valueOf(total));
+        mostrarCuota.setText(String.valueOf((total/plazo)));
+
+        EditText fechaFinal= findViewById(R.id.etFechaEnd);
+
+        SimpleDateFormat fechis= new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c= Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.MONTH,plazo);//Agregar el siguiente mes
+        fechaFinal.setText(fechis.format(c.getTime()));
 
     }
 

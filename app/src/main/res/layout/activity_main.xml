@@ -179,17 +179,6 @@
         app:layout_constraintStart_toStartOf="@+id/tvDireccion"
         app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
 
-    <Button
-        android:id="@+id/btContinuar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="30dp"
-        android:onClick="onClickContinuar"
-        android:text="Guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <EditText
         android:id="@+id/etTelefono"
         android:layout_width="0dp"
@@ -201,16 +190,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvTelefono"
         app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
-
-    <Button
-        android:id="@+id/btCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="30dp"
-        android:onClick="onClickCancelar"
-        android:text="Cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btContinuar" />
 
 </android.support.constraint.ConstraintLayout>

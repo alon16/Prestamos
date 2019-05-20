@@ -9,4 +9,5 @@
         <item>20</item>
         <item>25</item>
     </string-array>
+    <string name="title_activity_ver_lista_prestamos">verListaPrestamos</string>
 </resources>
