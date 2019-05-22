@@ -26,6 +26,7 @@ public class RVActivity extends AppCompatActivity {
 
 
         final RecyclerView rvCliente= findViewById(R.id.rvClientes);
+
         RVAdapter.OnItemClickListener onItemClickListener = new RVAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String cual, final int position) {
