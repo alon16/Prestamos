@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
           direccion.setText(Datos.clientes.get(posicion).getDireccion());
           ocupacion.setText(Datos.clientes.get(posicion).getOcupacion());
 
+          if(Datos.clientes.get(posicion).getSexo().equals("Femenino"))
+              sexo.setSelection(1);
+          else
+              sexo.setSelection(0);
+
 
         }
     }
@@ -104,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 Datos.clientes.get(posicion).setNombre(nombre.getText().toString());
+                Datos.clientes.get(posicion).setApellido(apellido.getText().toString());
+                Datos.clientes.get(posicion).setTelefono(telefono.getText().toString());
+                Datos.clientes.get(posicion).setCedula(cedula.getText().toString());
+                Datos.clientes.get(posicion).setSexo(sexo.getSelectedItem().toString());
+                Datos.clientes.get(posicion).setDireccion(direccion.getText().toString());
+                Datos.clientes.get(posicion).setOcupacion(ocupacion.getText().toString());
             }
             setResult(RESULT_OK, intent);
             finish();
