@@ -1,4 +1,4 @@
-package com.example.prestamos;
+package com.example.prestamos.obj;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,16 @@
-package com.example.prestamos;
+package com.example.prestamos.obj;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
+import static android.arch.persistence.room.ForeignKey.RESTRICT;
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity
 public class Prestamo {
-    private  String cliente;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private Double montoCredito;
     private String interes;
     private String plazo;
@@ -9,13 +18,35 @@ public class Prestamo {
     private String fechaFinal;
     private Double MontoPagar;
     private Double MontoCuota;
+    @ForeignKey(entity = Cliente.class,childColumns = "cedula",
+            parentColumns = "id",
+            onDelete = CASCADE,
+            onUpdate = RESTRICT
+    )
+    private String idCliente;
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public Prestamo(){
 
     };
 
-    public Prestamo(String Cliente,Double montoCredito, String interes, String plazo, String fechaInicio, String fechaFinal, Double montoPagar, Double montoCuota) {
-        this.cliente= Cliente;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Prestamo(Double montoCredito, String interes, String plazo, String fechaInicio, String fechaFinal, Double montoPagar, Double montoCuota) {
+
         this.montoCredito = montoCredito;
         this.interes = interes;
         this.plazo = plazo;
@@ -25,13 +56,6 @@ public class Prestamo {
         MontoCuota = montoCuota;
     }
 
-    public void setCliente(String cedula) {
-        this.cliente = cedula;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
 
     public void setMontoCredito(Double montoCredito) {
         this.montoCredito = montoCredito;

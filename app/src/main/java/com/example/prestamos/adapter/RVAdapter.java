@@ -1,4 +1,4 @@
-package com.example.prestamos;
+package com.example.prestamos.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.prestamos.R;
+import com.example.prestamos.obj.Cliente;
+import com.example.prestamos.pojo.ClienteConPrestamo;
+
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ClienteHolder> {
-    private List<Cliente>clienteList;
+    private List<ClienteConPrestamo>clienteList;
     private OnItemClickListener onItemClickListener;
 
     public  interface OnItemClickListener
@@ -21,7 +24,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ClienteHolder> {
     }
 
 
-    public RVAdapter(List<Cliente>clienteList,OnItemClickListener onItemClickListener){
+    public RVAdapter(List<ClienteConPrestamo>clienteList,OnItemClickListener onItemClickListener){
         this.clienteList=clienteList;
         this.onItemClickListener=onItemClickListener;
     }
@@ -38,8 +41,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ClienteHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ClienteHolder clienteHolder, int i) {
-        clienteHolder.tvNombre.setText(clienteList.get(i).getNombre());
-        clienteHolder.tvApellido.setText(clienteList.get(i).getApellido());
+        clienteHolder.tvNombre.setText(clienteList.get(i).getCliente().getNombre());
+        clienteHolder.tvApellido.setText(clienteList.get(i).getCliente().getApellido());
     }
 
     @Override
@@ -52,14 +55,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ClienteHolder> {
         public TextView tvApellido;
         public ImageButton ibEditar;
         public ImageButton ibBorrar;
+        public ImageButton ibVerPrestamo;
         public ClienteHolder(@NonNull View itemView) {
             super(itemView);
             this.tvNombre= itemView.findViewById(R.id.tvNombre);
             this.tvApellido= itemView.findViewById(R.id.tvApellido);
             this.ibEditar=itemView.findViewById(R.id.ibEditar);
             this.ibBorrar=itemView.findViewById(R.id.ibBorrar);
+            this.ibVerPrestamo=itemView.findViewById(R.id.ibVerPrestamo);
             this.ibEditar.setOnClickListener(this);
             this.ibBorrar.setOnClickListener(this);
+            this.ibVerPrestamo.setOnClickListener(this);
             this.tvNombre.setOnClickListener(this);
             this.tvApellido.setOnClickListener(this);
         }
@@ -71,6 +77,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ClienteHolder> {
                 enviar="editar";
             else if (v.getId()==R.id.ibBorrar)
                     enviar ="borrar";
+            else if (v.getId()==R.id.ibVerPrestamo)
+                enviar="VerPrestamo";
             else
                 enviar="nombre";
             onItemClickListener.onItemClick(enviar, getAdapterPosition());

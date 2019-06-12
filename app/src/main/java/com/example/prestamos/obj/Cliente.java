@@ -1,11 +1,19 @@
-package com.example.prestamos;
+package com.example.prestamos.obj;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+
+@Entity
 public class Cliente {
+    @PrimaryKey() @NonNull
+    private String cedula;
     private String nombre;
     private String apellido;
     private String sexo;
     private String telefono;
-    private String cedula;
+
     private String ocupacion;
     private String direccion;
 
@@ -21,8 +29,6 @@ public class Cliente {
     public Cliente(){
 
     }
-
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

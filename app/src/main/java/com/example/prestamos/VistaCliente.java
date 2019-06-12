@@ -1,19 +1,25 @@
 package com.example.prestamos;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class VistaCliente extends AppCompatActivity {
+import com.example.prestamos.db.DbPrestamos;
+import com.example.prestamos.obj.Cliente;
+import com.example.prestamos.obj.Datos;
+import com.example.prestamos.pojo.ClienteConPrestamo;
 
+public class VistaCliente extends AppCompatActivity {
+    private ClienteConPrestamo cliente= new ClienteConPrestamo();
+    private DbPrestamos db;
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,20 +34,31 @@ public class VistaCliente extends AppCompatActivity {
         TextView ocupacion= findViewById(R.id.tvOcupacion);
         TextView sexo= findViewById(R.id.tvSexo);
 
+        db= DbPrestamos.getAppDataBase(this);
         Bundle extras=getIntent().getExtras();
-        int posicion=0;
+
 
         if(extras!=null)
         {
+            id=extras.getString("position");
 
-            posicion=extras.getInt("position");
+            cliente=db.clienteDao().ObtenerPorId(id);
+
+            nombre.setText(cliente.getCliente().getNombre());
+            telefono.setText(cliente.getCliente().getTelefono());
+            cedula.setText(cliente.getCliente().getCedula());
+            direccion.setText(cliente.getCliente().getDireccion());
+            apellido.setText(cliente.getCliente().getApellido());
+            ocupacion.setText(cliente.getCliente().getOcupacion());
+            sexo.setText(cliente.getCliente().getSexo());
+            /*
             nombre.setText(Datos.clientes.get(posicion).getNombre());
             telefono.setText(Datos.clientes.get(posicion).getTelefono());
             cedula.setText(Datos.clientes.get(posicion).getCedula());
             direccion.setText(Datos.clientes.get(posicion).getDireccion());
             apellido.setText(Datos.clientes.get(posicion).getApellido());
             ocupacion.setText(Datos.clientes.get(posicion).getOcupacion());
-            sexo.setText(Datos.clientes.get(posicion).getSexo());
+            sexo.setText(Datos.clientes.get(posicion).getSexo());*/
         }
 
         //Inicializando los TextView
@@ -80,8 +97,8 @@ public class VistaCliente extends AppCompatActivity {
             if(item.getItemId()==R.id.mnNuevoPrestamo){
                 Intent intent= new Intent(this, RegistroCredito.class);
                 intent.putExtra("nombre",nombre.getText()+" "+apellido.getText());
+                intent.putExtra("idCliente",id);
                 startActivity(intent);
-
         }
         return super.onOptionsItemSelected(item);
     }

@@ -14,7 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.prestamos.db.DbPrestamos;
+import com.example.prestamos.obj.Cliente;
+import com.example.prestamos.obj.Datos;
+import com.example.prestamos.obj.Prestamo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +30,7 @@ public class RegistroCredito extends AppCompatActivity {
     private Double montito=0.0;
     private int tiempo=1;
     private Double inte=0.15;
+    private String idCliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +50,12 @@ public class RegistroCredito extends AppCompatActivity {
 
         if(extras!=null)
         {
+            idCliente=extras.getString("idCliente");
             valor= extras.getString("nombre");
             spnombre.add(valor);
         }
         else {
-            for (Cliente c:Datos.clientes) {
+            for (Cliente c: Datos.clientes) {
                 spnombre.add(c.getNombre()+" "+c.getApellido());
             }
         }
@@ -164,16 +170,15 @@ public class RegistroCredito extends AppCompatActivity {
             EditText fechaFinal= findViewById(R.id.etFechaEnd);
             TextView montoPagar=findViewById(R.id.tvTotalPagar);
             TextView montoCuota=findViewById(R.id.tvCuota);
+            NuevoPrestamo.setIdCliente(idCliente);
             NuevoPrestamo.setMontoCredito(Double.parseDouble(monto.getText().toString()));
-            NuevoPrestamo.setCliente(nombres.getSelectedItem().toString());
-
             NuevoPrestamo.setInteres(interes.getSelectedItem().toString());
             NuevoPrestamo.setPlazo(plazo.getText().toString());
             NuevoPrestamo.setFechaInicio(fechaInicio.getText().toString());
             NuevoPrestamo.setFechaFinal(fechaFinal.getText().toString());
             NuevoPrestamo.setMontoPagar(Double.valueOf(montoPagar.getText().toString()));
-            NuevoPrestamo.setMontoCuota(Double.valueOf(montoCuota.getText().toString()));
-            Datos.prestamos.add(NuevoPrestamo);
+            NuevoPrestamo.setMontoCuota(0.0);
+            DbPrestamos.getAppDataBase(this).prestamoDao().Insertar(NuevoPrestamo);
             setResult(RESULT_OK,intent);
         }
         else

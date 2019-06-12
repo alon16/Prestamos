@@ -1,4 +1,4 @@
-package com.example.prestamos;
+package com.example.prestamos.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.prestamos.R;
+import com.example.prestamos.obj.Prestamo;
+import com.example.prestamos.pojo.PrestamoConCliente;
+import com.example.prestamos.pojo.PrestamoConPagoCliente;
+
 import java.util.List;
 
 public class MiAdapterCiente extends ArrayAdapter {
     private Context context;
     private int resource;
-    private List<Prestamo> clienteList;
+    private List<PrestamoConCliente> clienteList;
 
 
     public MiAdapterCiente(Context context, int resource, List objects) {
@@ -20,6 +25,7 @@ public class MiAdapterCiente extends ArrayAdapter {
         this.context=context;
         this.resource=resource;
         this.clienteList=objects;
+
     }
 
     @Override
@@ -31,9 +37,9 @@ public class MiAdapterCiente extends ArrayAdapter {
         TextView tvMonto= v.findViewById(R.id.tvMonto);
         TextView tvCuota= v.findViewById(R.id.tvCuota);
 
-        tvCliente.setText(clienteList.get(position).getCliente());
-        tvMonto.setText(clienteList.get(position).getMontoPagar().toString());
-        tvCuota.setText(clienteList.get(position).getPlazo());
+        tvCliente.setText(clienteList.get(position).getCliente().getNombre());
+        tvMonto.setText(clienteList.get(position).getPrestamo().getMontoPagar().toString());
+        tvCuota.setText(clienteList.get(position).getPrestamo().getPlazo());
         return v;
     }
 }

@@ -13,7 +13,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.prestamos.obj.Datos;
+
 public class Inicial extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +25,13 @@ public class Inicial extends AppCompatActivity {
         TextView tvDatos=findViewById(R.id.tvDatos);
         registerForContextMenu(tvDatos);
 
-        Datos.clientes.add(new Cliente("katherine","Ruiz","Femenino","85701960","0861010971000s","Estudiante","sdfdfgfh"));
-        Datos.clientes.add(new Cliente("Rodrigo","Perez","Maculino","85561960","0861010971000s","Estudiante","sdfdfgfh"));
-        Datos.clientes.add(new Cliente("Amelia","Rosales","Femenino","887901960","0861010971000s","Estudiante","sdfdfgfh"));
 
-        Datos.prestamos.add(new Prestamo("katherine Ruiz",2345.0,"15","4","10/10/2019","10/02/2020",3752.0,938.0));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -44,11 +40,8 @@ public class Inicial extends AppCompatActivity {
                 startActivityForResult(intent,1111);
                 break;
             case R.id.mnPrestamo:
-                if(!Datos.clientes.isEmpty()){
                 Intent intent1 = new Intent(this, listaPrestamos.class);
-                startActivity(intent1);}
-                else
-                    Toast.makeText(this, "Ingrese Clientes Primero", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
                 break;
             case R.id.mnVerCliente:
                 Intent intent2 = new Intent(this, RVActivity.class);
